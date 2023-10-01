@@ -1,15 +1,16 @@
 import {Controller, Get} from '@nestjs/common';
+import {ApiOperation, ApiTags} from '@nestjs/swagger';
 import {AppService} from './app.service';
-import {ApiResponse} from '@common/api/data';
-import {ApiCodeResponse} from '@common/api/data/enum/api-code.response';
+import {TestException} from './app.exception';
 
+@ApiTags('Route de base')
 @Controller()
 export class AppController {
     constructor(private readonly appService: AppService) {
     }
-
+    @ApiOperation({summary: 'getHello()', description: 'Throws an exception'})
     @Get()
-    getHello(): ApiResponse {
-        return {result:true , code: ApiCodeResponse.TEST, data:null};
+    getHello(): string {
+        throw new TestException();
     }
 }
