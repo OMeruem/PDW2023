@@ -1,0 +1,16 @@
+<div class="sign-in-container">
+  <div *ngIf="error$().length > 0" class="error">{{error$()}}</div>
+  <h1 class="title">{{title}}</h1>
+  <div class="form" [formGroup]="config.formGroup">
+    <ng-container *ngFor="let field of config.fields">
+      <div class="form-group">
+        <label>{{field.label}}</label>
+        <input [type]="field.inputType"
+               [formControl]="field.control"
+               autocomplete="new-password"
+               [placeholder]="field.placeHolder"/>
+      </div>
+    </ng-container>
+    <button class="btn-login" (click)="save()">{{btnLabel}}</button>
+  </div>
+</div>

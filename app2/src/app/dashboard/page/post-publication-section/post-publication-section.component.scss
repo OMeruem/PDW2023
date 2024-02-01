@@ -1,0 +1,37 @@
+.post-creation {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  width: 100%; /* ou une autre largeur selon votre mise en page */
+  box-sizing: border-box;
+}
+
+.post-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-textarea {
+  padding: 10px;
+  height: 100px; /* ajustez la hauteur selon vos besoins */
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical; /* permet à l'utilisateur de redimensionner verticalement */
+}
+
+.post-submit {
+  background-color: #0066ff;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.post-submit:hover {
+  background-color: #0056e8;
+}

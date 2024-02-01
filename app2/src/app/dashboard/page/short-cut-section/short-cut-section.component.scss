@@ -1,0 +1,49 @@
+.sidebar-shortcuts {
+  width: 250px; /* Adjust the width as needed */
+  background-color: #f5f5f5; /* Light grey background */
+  padding: 20px;
+  border-radius: 8px; /* Rounded corners for the rectangle */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  margin: 20px; /* Adjust margin as needed */
+}
+
+.shortcuts-header {
+  font-size: 20px; /* Larger font size for the header */
+  font-weight: bold; /* Bold font for the header */
+  margin-bottom: 20px; /* Space below the header */
+  text-align: center; /* Center the header text */
+}
+
+.shortcuts-nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.shortcuts-list {
+  list-style: none; /* Remove default list styling */
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
+}
+
+.shortcut-button {
+  background-color: #ffffff; /* White background for the buttons */
+  color: #333333; /* Dark grey text */
+  text-align: left;
+  padding: 10px;
+  width: 100%;
+  border: none;
+  border-radius: 4px;
+  margin-bottom: 10px; /* Space between buttons */
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s; /* Smooth background color change on hover */
+}
+
+.shortcut-button:hover {
+  background-color: #e7e7e7; /* Light grey background on hover */
+}
+
+.shortcut-button:focus {
+  outline: none; /* Remove the default focus highlight */
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5); /* Custom focus highlight */
+}

@@ -1,0 +1,18 @@
+.dashboard-layout {
+  display: flex;
+  max-width: 1800px;
+  margin: auto;
+  gap: 20px;
+}
+
+.left-sidebar {
+  flex: 1;
+}
+
+.main-content {
+  flex: 3;
+}
+
+.right-sidebar {
+  flex: 1;
+}

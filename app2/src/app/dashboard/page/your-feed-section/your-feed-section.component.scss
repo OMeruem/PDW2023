@@ -1,0 +1,33 @@
+.posts-section {
+  width: 100%;
+  margin: 20px auto;
+  box-sizing: border-box;
+}
+
+.post-card {
+  background-color: #fff;
+  margin-bottom: 15px;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.post-author {
+  font-weight: bold;
+  color: #333;
+}
+
+.post-date {
+  color: #666;
+  font-size: 0.8em;
+}
+
+.post-content {
+  color: #333;
+}

@@ -1,0 +1,73 @@
+.sign-in-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #f7f7f7;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.title {
+  font-size: 2rem; /* Taille de police plus grande pour le titre */
+  color: #333;
+  margin-bottom: 1rem; /* Espace sous le titre */
+  text-align: center; /* Centre le titre */
+}
+
+.error {
+  margin-bottom: 1rem; /* Espace sous le message d'erreur */
+  padding: 10px;
+  width: 100%; /* Pleine largeur pour attirer l'attention */
+  text-align: center;
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.form {
+  width: 100%; /* Utiliser toute la largeur disponible */
+  max-width: 400px; /* Largeur maximale pour le formulaire */
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+.form-group {
+  margin-bottom: 20px; /* Plus d'espace entre les champs de formulaire */
+}
+
+.form-group label {
+  display: block; /* Assurez-vous que le label est sur sa propre ligne */
+  margin-bottom: .5rem; /* Espace entre le label et l'input */
+}
+
+.form-group input {
+  width: calc(100% - 20px); /* soustraire le padding total de la largeur */
+  padding: 10px;
+  margin: 0 10px; /* ajouter un margin pour centrer l'input */
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box; /* inclure padding et border dans la largeur de l'élément */
+}
+
+.btn-login {
+  background-color: #0056b3;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1rem; /* Taille de police pour le bouton */
+  margin-top: 10px; /* Espace au-dessus du bouton */
+}
+
+.btn-login:hover {
+  background-color: #003875;
+}
