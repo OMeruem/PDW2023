@@ -13,8 +13,6 @@ private readonly api:ApiService=inject(ApiService);
     return this.api.post(ApiURI.SIGN_IN, payload);
 
   }
-
-
   public signUp(payload: SignUpPayload):Observable<any> {
     return this.api.post(ApiURI.SIGN_UP, payload);
   }

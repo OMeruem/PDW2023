@@ -7,7 +7,7 @@ export const DashboardRoutes: Routes = [
     children: [
       {
         path: '',
-        loadComponent: () => import('./home/page/dashboard-home-page/dashboard-home-page.component').then(c => c.DashboardHomePageComponent),
+        loadComponent: () => import('./page/dashboard-home-page/dashboard-home-page.component').then(c => c.DashboardHomePageComponent),
       },
       {
         path: 'member',

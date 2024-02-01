@@ -1,11 +1,1 @@
-<div>
-  <div class="form" [formGroup]="formGroup">
-    <label>Username</label>
-    <input type ="text" formControlName='username' autocomplete="new-password" placeholder="test"/>
-    <label>Password</label>
-    <input type = "password" formControlName='password'  placeholder="mdp"/>
-    <button (click)="save()">connexion</button>
-  </div>
-</div>
-
-
+<app-sign-in-up-form [config]="config"></app-sign-in-up-form>

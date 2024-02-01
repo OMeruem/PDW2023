@@ -8,7 +8,6 @@ export interface SignUpPayload extends Payload{
 
   mail: string
 
-
   googleHash: string
 
   facebookHash: string

@@ -6,6 +6,15 @@ import {Logger, ValidationError, ValidationPipe} from '@nestjs/common';
 import {ApiInterceptor, ValidationException} from '@common/api';
 const bootstrap = async () => {
     const app = await NestFactory.create(AppModule);
+
+    // Configuration CORS, a vérifier
+    app.enableCors({
+        origin: process.env.NODE_ENV === 'production' ? 'https://www.monappfrontend.com' : '*',
+        methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+        allowedHeaders: 'Content-Type, Accept',
+    });
+
+
     app.setGlobalPrefix(configManager.getValue(ConfigKey.APP_BASE_URL));
     swaggerConfiguration.config(app);
     app.useGlobalFilters(new HttpExceptionFilter());
