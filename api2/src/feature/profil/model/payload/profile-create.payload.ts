@@ -9,13 +9,13 @@ export class ProfileCreatePayload {
     @IsString()
     @IsOptional()
     @Length(1, 50)
-    nom: string;
+    lastname: string;
 
     @ApiProperty()
     @IsString()
     @IsOptional()
     @Length(1, 50)
-    prenom: string;
+    firstname: string;
 
     @ApiProperty()
     @IsString()
@@ -31,7 +31,7 @@ export class ProfileCreatePayload {
     @ApiProperty()
     @IsOptional()
     @Length(1, 50)
-    photoProfile: string;
+    profilePic: string;
 
     @ApiProperty()
     @IsEmail()
@@ -41,6 +41,6 @@ export class ProfileCreatePayload {
 
     @ApiProperty()
     @IsOptional()
-    credential: string;
+    credential_id: string;
 
 }

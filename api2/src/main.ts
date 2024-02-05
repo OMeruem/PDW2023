@@ -8,11 +8,7 @@ const bootstrap = async () => {
     const app = await NestFactory.create(AppModule);
 
     // Configuration CORS, a vérifier
-    app.enableCors({
-        origin: process.env.NODE_ENV === 'production' ? 'https://www.monappfrontend.com' : '*',
-        methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-        allowedHeaders: 'Content-Type, Accept',
-    });
+    app.enableCors();
 
 
     app.setGlobalPrefix(configManager.getValue(ConfigKey.APP_BASE_URL));

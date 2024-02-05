@@ -1,8 +1,11 @@
-import {Body, Controller, Get, Param, Post} from '@nestjs/common';
+import {Body, Controller, Delete, Get, Param, Post} from '@nestjs/common';
 import {ApiBearerAuth, ApiTags} from "@nestjs/swagger";
 import {Publication} from "../model/entity";
 import {PublicationService} from "../service/publication.service";
 import {PublicationCreatePayload} from "../model/payload/publication-create.payload";
+import {User} from '@common/config';
+import { Credential } from "../../../security";
+
 
 @ApiBearerAuth('access-token')
 @ApiTags('Publication')
@@ -11,16 +14,24 @@ export class PublicationController {
     constructor(private readonly service: PublicationService) {
     }
     @Post('create')
-    create(@Body() payload: PublicationCreatePayload): Promise<Publication> {
-        return this.service.create(payload);
+    create(@User() user: Credential, @Body() payload: PublicationCreatePayload): Promise<Publication> {
+        return this.service.create(user, payload);
     }
     @Get('detail/:id')
     detail(@Param('id') id: string): Promise<Publication> {
-        return this.service.detail(id);
+        return this.service.getPublication(id);
+    }
+
+    @Get('publication-by-user')
+    publicationDetail(@User() user :  Credential): Promise<Publication[]> {
+        return this.service.publicationByUser(user.credential_id);
     }
     @Get('list')
     getAll(): Promise<Publication[]> {
-        return this.service.getAll();
+        return this.service.getAllPublications();
     }
-
+    @Delete('delete/:id')
+    delete(@Param('id') id: string): Promise<void> {
+        return this.service.delete(id);
+    }
 }

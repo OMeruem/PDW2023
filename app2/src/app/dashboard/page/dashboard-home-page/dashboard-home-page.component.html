@@ -3,10 +3,11 @@
     <app-short-cut-section></app-short-cut-section>
   </div>
   <div class="main-content">
-    <app-post-publication-section></app-post-publication-section>
-    <app-your-feed-section></app-your-feed-section>
+    <app-post-publication-section [config]="config"></app-post-publication-section>
+    <app-your-feed-section [conf]="conf"></app-your-feed-section>
   </div>
   <div class="right-sidebar">
     <app-your-page-section></app-your-page-section>
+    <app-recent-activity-section></app-recent-activity-section>
   </div>
 </div>

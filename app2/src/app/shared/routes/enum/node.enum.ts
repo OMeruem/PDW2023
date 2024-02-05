@@ -8,5 +8,6 @@ export enum AppNode {
   SIGN_IN = 'sign-in',
   SIGN_UP = 'sign-up',
   FALL_BACK = '**',
+  MYPAGE = 'dashboard/myPage',
 
 }

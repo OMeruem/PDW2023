@@ -1,23 +1,28 @@
 import { Injectable } from '@nestjs/common';
 import {InjectRepository} from "@nestjs/typeorm";
-import {Comment, Profile} from "../model/entity";
 import {Repository} from "typeorm";
 import {Builder} from "builder-pattern";
 import {isNil} from "lodash";
 import {CommentCreatePayload} from "../model/payload/comment-create.payload";
-import {CommentCreateException, CommentListException, CommentNotFoundException} from '../profile.exception';
+import {
+    CommentCreateException,
+    CommentListException,
+    CommentNotFoundException,
+    PublicationListByCredentialException
+} from '../profile.exception';
+import { Credential } from "../../../security";
+import {Comment, Publication} from '../model/entity';
 
 @Injectable()
 export class CommentService {
     constructor(@InjectRepository(Comment) private readonly repository: Repository<Comment>) {}
-    async create(payload: CommentCreatePayload): Promise<Comment> {
+    async create(user: Credential, payload: CommentCreatePayload): Promise<Comment> {
         try {
-            const newComment = Object.assign(new Comment(), Builder<Comment>()
+            return await this.repository.save(Builder<Comment>()
                 .content(payload.content)
-                .profile(payload.profile)
-                .publication(payload.publication)
+                .credential_id(user.credential_id)
+                .idPublication(payload.idPublication)
                 .build());
-            return await this.repository.save(newComment);
         } catch (e) {
             throw new CommentCreateException();
         }
@@ -36,4 +41,25 @@ export class CommentService {
         } catch (e) {
             throw new CommentListException();
         }
-    }}
+    }
+
+    async getCommentsByPublicationId(idPublication: string): Promise<Comment[]> {
+        try {
+            return await this.repository.find({ where: { idPublication } });
+        } catch (e) {
+            throw new CommentListException();
+        }
+    }
+
+    async commentByUser(credential_id:string): Promise<Comment[]> {
+        try {
+            return await this.repository.find({
+                where: {credential_id: credential_id}
+            });
+        } catch (e) {
+            throw new PublicationListByCredentialException();
+        }
+    }
+}
+
+

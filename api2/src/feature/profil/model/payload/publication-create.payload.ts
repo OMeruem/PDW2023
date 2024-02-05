@@ -1,21 +1,21 @@
 import {IsArray, IsBoolean, IsDate, IsEmail, IsOptional, IsString, Length} from "class-validator";
 import {ApiProperty} from "@nestjs/swagger";
-import {Profile} from "../entity";
+import {Credential} from '../../../../security';
 
 export class PublicationCreatePayload {
     @ApiProperty()
     @IsString()
     @IsOptional()
-    @Length(1, 300)
+    @Length(1, 200)
     content: string;
 
     @ApiProperty()
     @IsOptional()
-    @Length(1, 50)
+    @Length(1, 20)
     typePublication: string;
 
     @ApiProperty()
     @IsOptional()
-    profile: Profile;
+    user: Credential;
 
 }

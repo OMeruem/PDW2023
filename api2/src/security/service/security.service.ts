@@ -12,14 +12,19 @@ import {
 import {Credential, RefreshTokenPayload, SignInPayload, SignupPayload, Token} from '../model';
 import {comparePassword, encryptPassword} from './utils';
 import {Builder} from 'builder-pattern';
+import {ProfileCreatePayload} from '../../feature/profil/model/payload/profile-create.payload';
+import {ProfileService} from '../../feature/profil/service/profile.service';
 
 
 
 @Injectable()
 export class SecurityService {
-    constructor(@InjectRepository(Credential) private readonly repository: Repository<Credential>,
-                private readonly tokenService: TokenService) {
-    }
+    constructor(
+        @InjectRepository(Credential)
+        private readonly repository: Repository<Credential>,
+        private readonly tokenService: TokenService,
+        private readonly profileService: ProfileService
+    ) {}
 
     async detail(id: string): Promise<Credential> {
         const result = await this.repository.findOneBy({credential_id: id});
@@ -51,21 +56,38 @@ export class SecurityService {
     }
 
     async signup(payload: SignupPayload): Promise<Credential | null> {
-        const result: Credential | null = await this.repository.findOneBy({username:
-            payload.username});
+        const result: Credential | null = await this.repository.findOneBy({username: payload.username});
+
         if (!isNil(result)) {
             throw new UserAlreadyExistException();
         }
         try {
-            const encryptedPassword =
-                 await encryptPassword(payload.password);
-            return this.repository.save(Builder<Credential>()
-                .username(payload.username)
-                .password(encryptedPassword)
-                .facebookHash(payload.facebookHash)
-                .googleHash(payload.googleHash)
-                .mail(payload.mail)
-                .build());
+            const encryptedPassword: string = await encryptPassword(payload.password);
+
+            const user = await this.repository.save(
+                Builder<Credential>()
+                    .username(payload.username)
+                    .password(encryptedPassword)
+                    .mail(payload.mail)
+                    .build()
+            );
+
+            // Automatically create a profile for the user
+            const ProfilePayload: ProfileCreatePayload = {
+                credential_id: user.credential_id,
+                lastname: '',
+                firstname: '',
+                description: '',
+                status: '',
+                profilePic: '',
+                mail: user.mail,
+            };
+
+            const profile = await this.profileService.create(user, ProfilePayload);
+
+            return user;
+
+
         } catch (e) {
             throw new SignupException();
         }

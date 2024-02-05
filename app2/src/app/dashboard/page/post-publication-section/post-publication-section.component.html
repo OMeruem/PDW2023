@@ -1,6 +1,14 @@
-<div class="post-creation">
-  <form class="post-form">
-    <textarea class="post-textarea" placeholder="Quoi de neuf ?"></textarea>
-    <button type="submit" class="post-submit">Publier</button>
-  </form>
+<div class="post-publication-container">
+  <div *ngIf="error$().length > 0" class="error">{{error$()}}</div>
+  <div class="form" [formGroup]="config.formGroup">
+    <ng-container *ngFor="let field of config.fields">
+      <div class="form-group">
+        <input class="input-field" [type]="field.inputType"
+               [formControl]="field.control"
+               autocomplete="new-password"
+               [placeholder]="field.placeHolder"/>
+      </div>
+    </ng-container>
+    <button class="btn-post" (click)="save()">Post</button>
+  </div>
 </div>

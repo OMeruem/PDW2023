@@ -1,63 +1,33 @@
 .my-page-section {
-  background-color: #ffffff;
-  border: 1px solid #e7e7e7;
+  background: #ffffff;
   border-radius: 8px;
-  width: 200px; /* Adjust the width as necessary */
-  margin: 10px;
-  padding: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 300px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 1);
 }
 
 .page-header h3 {
   text-align: center;
-  color: #333;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
-.profile-info {
-  text-align: center;
-}
-
-.profile-picture {
-  width: 60px; /* Adjust size as necessary */
-  height: 60px;
+.profile-info .profile-picture {
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
-  margin-bottom: 10px;
-}
-
-.notifications span {
+  margin: 20px auto;
   display: block;
-  margin-top: 5px;
-  color: #555;
-  font-size: 0.9em;
 }
 
-.page-stats {
-  margin-top: 15px;
+.page-stats .stats-item {
+  margin-top: 10px;
   text-align: center;
 }
 
-.likes-count,
-.views-count {
-  display: block;
+.page-stats .stats-count {
   font-weight: bold;
-  color: #333;
+  display: block;
 }
 
-.likes {
-  color: #4caf50;
-  margin-bottom: 5px;
-}
 
-.friends-list {
-  margin-top: 15px;
-  display: flex;
-  justify-content: center;
-}
-
-.friends-list img {
-  width: 30px; /* Adjust size as necessary */
-  height: 30px;
-  border-radius: 50%;
-  margin: 0 2px;
-}

@@ -17,6 +17,11 @@ export const DashboardRoutes: Routes = [
       {
         path: 'member',
         loadChildren: () => import('./feature/member/page/member.routes').then(c => c.memberRoutes)
+      },
+
+      {
+        path: 'myPage',
+        loadComponent: () => import('./page/my-page-section/my-page-section.component').then(c => c.MyPageSectionComponent)
       }
     ]
   },

@@ -1,21 +1,52 @@
-<div class="posts-section">
-  <div class="post-card">
+<div class="myFeed" *ngFor="let publication of publicationService.list$().reverse()">
+  <div class="post-container">
+    <!-- Post Header -->
     <div class="post-header">
-      <span class="post-author">John Doe</span>
-      <span class="post-date">3 mars 2024</span>
+      Posted at {{ publication.created | date:'HH:mm dd-MM-yyyy ' }}
+      <button class="btn-delete" (click)="onDeletePublication(publication.idPublication)" title="Delete">
+        <i class="fa fa-trash"></i>
+      </button>
     </div>
-    <div class="post-content">
-      C'est un superbe jour aujourd'hui !
-    </div>
-  </div>
 
-  <div class="post-card">
-    <div class="post-header">
-      <span class="post-author">Jane Smith</span>
-      <span class="post-date">2 mars 2024</span>
-    </div>
+    <!-- Post Content -->
     <div class="post-content">
-      J'adore apprendre Angular et NestJS !
+      {{ publication.content }}
+      <img src="assets/images/imgNeige.png" alt="Snowy Scene" class="post-image">
+    </div>
+
+    <!-- Post Actions -->
+    <div class="post-actions">
+      <button class="btn-action btn-see-comments" (click)="seeComments(publication.idPublication)">
+        <i class="fa fa-comments"></i> See comments
+      </button>
+      <button class="btn-action btn-like" (click)="saveLike(publication.idPublication)">
+        <i class="fa fa-thumbs-up"></i> Like
+      </button>
+      <button class="btn-action btn-share">
+        <i class="fa fa-share"></i> Share
+      </button>
+    </div>
+
+    <!-- Comment Section -->
+    <div class="comment-section" [formGroup]="conf.formGroup">
+      <div class="commentInput">
+        <ng-container *ngFor="let field of conf.fields">
+          <input class="input-comment" [placeholder]="field.placeHolder" [type]="field.inputType" [formControl]="field.control">
+        </ng-container>
+        <button class="btn-action btn-comment" (click)="saveComment(publication.idPublication)">
+          <i class="fa fa-paper-plane"></i> Let them know
+        </button>
+      </div>
+      <div *ngIf="selectedPublicationId === publication.idPublication" class="comments-container">
+        <div *ngFor="let comment of commentService.List$()" class="comments-display">
+          <div class="comment-header">
+            Posted at {{ comment.created | date:'HH:mm dd-MM-yyyy ' }}
+          </div>
+          <div class="comment-content">
+            {{ comment.content }}
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

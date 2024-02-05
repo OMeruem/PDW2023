@@ -10,28 +10,25 @@ export class Profile{
     idProfile: string;
 
     @Column({length: 50, nullable: true})
-    nom: string;
+    lastName: string;
 
     @Column({length: 50, nullable: true})
-    prenom: string;
+    firstName: string;
 
     @Column({length: 200, nullable: true})
     description: string;
 
     @Column({length: 50, nullable: true})
-    status: string;
-
-    @Column({length: 50, nullable: true})
-    photoProfile: string;
+    profilePic: string;
 
     @Column({length: 50, nullable: true})
     mail: string;
 
+    @Column({length: 50, nullable: true})
+    status: string;
+
     @OneToOne(() => Credential)
     @JoinColumn({referencedColumnName: 'credential_id', name: 'credential_id_fk'})
-    credential: string;
-
-    @OneToMany(()=>Publication, ()=> Publication,{cascade:true})
-    publication:Publication[];
+    credential_id: string;
 
 }

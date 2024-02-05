@@ -13,9 +13,7 @@ export class LikeService {
     async create(payload: LikeCreatePayload): Promise<Like> {
         try {
             const newLike = Object.assign(new Like(), Builder<Like>()
-                .profile(payload.profile)
-                .publication(payload.publication)
-                .comment(payload.comment)
+                .idPublication(payload.idPublication)
                 .build());
             return await this.repository.save(newLike);
         } catch (e) {

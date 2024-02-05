@@ -2,5 +2,17 @@ export enum ApiURI{
   SIGN_IN='account/signin',
   SIGN_UP='account/signup',
   ME='account/me',
-  REFRESH_TOKEN = 'account/refresh'
+  REFRESH_TOKEN = 'account/refresh',
+  CREATE_PUBLICATION='publication/create',
+  LIST_PUBLICATION = 'publication/list',
+  PUBLICATION_BY_USER ='publication/publication-by-user',
+  COMMENT_CREATE = 'comment/create',
+  COMMENT_LIST = 'comment/list',
+  COMMENT_BY_USER ='comment/comment-by-user',
+  DELETE_PUBLICATION= 'publication/delete',
+  LIKE_CREATE = 'like/create',
+  LIKE_LIST = 'like/list',
+  UPDATE_PROFILE = 'profile/profile-update',
+  GET_PROFILE ='profile/ProfileByCredential',
+  CREATE_PROFILE='profile/create',
 }

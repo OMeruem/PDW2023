@@ -1,28 +1,21 @@
 <aside class="my-page-section">
-  <div class="page-header">
-    <h3>YOUR PAGE</h3>
-  </div>
+  <ng-container *ngIf="myProfileService.list$() as profile">
+    <div class="page-header">
+      <h3>{{profile.lastName}} {{profile.firstName}}</h3>
+    </div>
+  </ng-container>
   <div class="page-content">
     <div class="profile-info">
       <img src="assets/images/img.png" alt="Profile" class="profile-picture">
-      <span>My Page</span>
-      <div class="notifications">
-        <span>Messages [9]</span>
-        <span>Notifications [2]</span>
-      </div>
     </div>
     <div class="page-stats">
-      <div class="likes">
-        <span class="likes-count">884</span>
-        <span>LIKES</span>
+      <div class="stats-item">
+        <span>Publications : {{ publicationService.list2$().length }}</span>
       </div>
-      <div class="views">
-        <span class="views-count">35 New Likes This Week</span>
+
+      <div class="stats-item">
+        <span>Comments : {{ commentService.List2$().length }}</span>
       </div>
-    </div>
-    <div class="friends-list">
-      <!-- Insert friends' profile images here -->
     </div>
   </div>
 </aside>
-

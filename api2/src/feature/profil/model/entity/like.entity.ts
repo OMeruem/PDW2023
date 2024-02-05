@@ -1,26 +1,29 @@
-import {BeforeInsert, Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryColumn} from "typeorm";
+import {
+    BeforeInsert,
+    Column,
+    Entity,
+    JoinColumn, ManyToOne,
+    OneToMany,
+    OneToOne,
+    PrimaryColumn,
+    PrimaryGeneratedColumn
+} from "typeorm";
 
 import {ulid} from "ulid";
 import {Profile} from "./profile.entity";
 import {Publication} from "./publication.entity";
 import {Comment} from "./comment.entity";
+import {BaseEntity} from '@common/model/entity/base.entity';
 
 
 @Entity()
-export class Like {
-    @PrimaryColumn('varchar', {length: 26, default: () => `'${ulid()}'`})
+export class Like extends BaseEntity{
+    @PrimaryGeneratedColumn("uuid")
     idLike: string;
 
-    @OneToOne(() => Profile, {cascade: true, eager: true})
-    @JoinColumn({referencedColumnName: 'idProfile', name: 'idProfile_fk'})
-    profile: Profile;
-
-    @OneToOne(() => Publication, {cascade: true, eager: true})
+    @ManyToOne(() => Publication, {cascade: true, onDelete:"CASCADE"})
     @JoinColumn({referencedColumnName: 'idPublication', name: 'idPublication_fk'})
-    publication: Publication;
+    idPublication: string;
 
-    @OneToOne(() => Comment, {cascade: true, eager: true})
-    @JoinColumn({referencedColumnName: 'idComment', name: 'idComment_fk'})
-    comment: Comment;
 
 }

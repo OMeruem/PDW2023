@@ -1,9 +1,6 @@
 import {Component, inject} from '@angular/core';
-import {InputComponent} from '../../../shared/ui/form/component/input/input.component';
-import {SignInPayload} from '../../data/payload';
 import {CommonModule} from '@angular/common';
 import {Form, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
-import {SecurityService} from '../../service';
 import {SignInUpFormComponent} from '../../component/sign-in-up-form';
 import {SecurityFormUtilsService} from '../../service/security-form-utils.service';
 import {SignInUpFormConfig} from '../../data';

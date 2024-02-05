@@ -10,7 +10,9 @@ import {SignInPayload, SignUpPayload} from '../../data/payload';
 import {ApiCodeResponse} from '../../../shared/api/service/api-code.response';
 import {AppNode} from '../../../shared/routes/enum/node.enum';
 import {Router} from '@angular/router';
-
+import {PublicationCreatePayload} from '../../../dashboard/model/payload/postPublication.payload';
+import {MyProfileService} from '../../../dashboard/service/myProfile.service';
+import {updateProfilePayload} from '../../../dashboard/model/payload/updateProfile.payload';
 
 
 @Component({
@@ -28,6 +30,7 @@ import {Router} from '@angular/router';
 export class SignInUpFormComponent implements OnInit{
   @Input({required:true}) config!: SignInUpFormConfig;
   private readonly securityService: SecurityService = inject(SecurityService)
+  private readonly myProfileService: MyProfileService = inject(MyProfileService)
   title:string = 'Connexion'
   btnLabel:string = 'Se connecter'
   error$:WritableSignal<string> = signal('');
@@ -62,7 +65,24 @@ export class SignInUpFormComponent implements OnInit{
         }
       })
     } else {
-      this.error$.set('Formulaire non valid')
+      this.error$.set('Formulaire non valide')
     }
+    this.createProfile();
+  }
 
-}}
+  createProfile(): void {
+    this.error$.set('');
+    const payload: updateProfilePayload = {
+      lastName:'default',
+      firstName:'default',
+      description:'default',
+      profilePic:'default',
+      status:'Online',
+      user: {},
+      ...this.config.formGroup.value
+    };
+
+    console.log('payload', payload);
+    this.myProfileService.profileCreate(payload as updateProfilePayload).subscribe();
+  }
+}

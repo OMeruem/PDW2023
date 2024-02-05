@@ -5,17 +5,14 @@ import {ApiProperty} from "@nestjs/swagger";
 import {Profile} from "../entity";
 import {Publication} from "../entity";
 import {Comment} from "../entity";
+import {BaseEntity} from '@common/model/entity/base.entity';
 
-export class LikeCreatePayload {
+export class LikeCreatePayload extends BaseEntity{
     @ApiProperty()
     @IsOptional()
-    profile: Profile;
-
-    @ApiProperty()
-    @IsOptional()
-    publication: Publication;
+    credential_id: string;
 
     @ApiProperty()
     @IsOptional()
-    comment: Comment;
+    idPublication: string;
 }
