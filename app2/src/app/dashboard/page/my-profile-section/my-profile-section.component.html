@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="shortcut">
+    <app-short-cut-section></app-short-cut-section>
+  </div>
+
+  <div class="form-container">
+    <h1 class="form-title">Update Profile</h1>
+    <div class="form" [formGroup]="config.formGroup">
+      <ng-container *ngFor="let field of config.fields">
+        <div class="form-field">
+          <label>{{field.label}}</label>
+          <input [type]="field.inputType" [formControl]="field.control" autocomplete="off" [placeholder]="field.placeHolder"/>
+        </div>
+      </ng-container>
+      <button class="form-button" (click)="updateProfile()">Update</button>
+    </div>
+  </div>
+
+  <ng-container *ngIf="myProfileService.list$() as profile">
+    <div class="profile-display-container">
+      <div class="profile-image-container">
+        <img [src]="'assets/images/' + profile.profilePic" alt="Profile Image" class="profile-image">
+      </div>
+      <div class="profile-details">
+        <div class="profile-field">
+          <label>Last Name:</label>
+          <span class="profile-data">{{profile.lastName}}</span>
+        </div>
+        <div class="profile-field">
+          <label>First Name:</label>
+          <span class="profile-data">{{profile.firstName}}</span>
+        </div>
+        <div class="profile-field">
+          <label>Description:</label>
+          <span class="profile-data">{{profile.description}}</span>
+        </div>
+        <div class="profile-field">
+          <label>Mail:</label>
+          <span class="profile-data">{{profile.mail}}</span>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>

@@ -1,0 +1,17 @@
+<aside class="recent-activity">
+  <div class="activity-header">
+    <h3>Recent Activity</h3>
+  </div>
+  <div class="activity-content">
+    <div class="activity-item">
+      <span>Last Post: {{ lastPublicationDate | date:'medium' }}</span>
+    </div>
+    <div class="activity-item">
+      <span>Last Comment: {{ lastCommentDate | date:'medium' }} </span>
+    </div>
+    <div class="activity-item">
+      <span>Last Like: {{ lastLikeDate | date:'medium' }}</span>
+    </div>
+  </div>
+  <button class="btn-profile" (click)="goToMyProfile()">My Profile</button>
+</aside>
